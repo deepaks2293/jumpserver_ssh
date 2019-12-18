@@ -2,6 +2,7 @@ import paramiko
 import sys
 import exception_jumpssh as exceptions
 import socket
+import time
 import subprocess
 
 def connect(server_ip, user, passwd):
