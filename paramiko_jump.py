@@ -58,28 +58,29 @@ def login_node(vm,node_ip,server_ip, username, password):
     return connection
 
 def get_shell(connection):
-    client = connection.invoke_shell()
-    return client
+	client = connection.invoke_shell()
+	return client
 
 def terminal_length_zero(client,prompt,command):
-    connection_data = ''
-    client.send(command +'\n') #edited#
-    while not connection_data.endswith(prompt):
-            resp = client.recv(1024)
-            connection_data += resp.decode()
+	connection_data = ''
+	client.send(command +'\n') #edited#
+	time.sleep(2)
+	while not connection_data.endswith(prompt):
+		resp = client.recv(1024)
+		connection_data += resp.decode()
 
 def command_send(client,prompt,command):
-    connection_data = ''
-    output =''
-    client.send(command +'\n') #edited#
-    while not connection_data.endswith(prompt):
-            resp = client.recv(1024)
-            connection_data += resp.decode()
-    output = connection_data
-    return output
+	connection_data = ''
+	client.send(command +'\n') #edited#
+	time.sleep(2)
+	while not connection_data.endswith(prompt):
+		resp = client.recv(1024)
+		connection_data += resp.decode()
+		output = connection_data
+	return output
 
 def node_logout(connection):
-    connection.close()
+	connection.close()
 
 def logout(vm):
-    vm.close()
+	vm.close()
