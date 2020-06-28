@@ -1,4 +1,5 @@
-
+#Author Deepak singh
+#version 1.1
 import paramiko
 import sys
 import exception_jumpssh as exceptions
